@@ -1,10 +1,10 @@
 from glob import glob
-from os import path, unlink
+from os import path
 from os.path import basename, splitext
 from pathlib import Path
 from subprocess import run
+
 from redmail import EmailSender
-from atexit import register
 
 
 # noinspection PyShadowingNames
@@ -45,9 +45,3 @@ if __name__ == '__main__':
             attachments={basename(o): Path(o)}
         )
         print('Done')
-
-
-    @register
-    def clean():
-        # noinspection PyShadowingNames
-        for o in output: unlink(o)
